@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col s8 offset-s2">
+    <div class="card">
+      <div class="sm-jumbotron center-align">
+        <h2>User Registration</h2>
+      </div>
+      <form class="col s12 white" #UserRegistrationForm="ngForm" autocomplete="off">
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" class="validate" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" required>
+            <label data-error="Required Field!">User Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="password" class="validate" name="Password" #Password="ngModel" [(ngModel)]="user.Password" required minlength="3">
+            <label [attr.data-error] ="Password.errors != null?(Password.errors.required? 'Required Field':'Minimum 3 Characters Needed'):''">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" name="Email" #Email="ngModel" [(ngModel)]="user.Email" [pattern]="emailPattern">
+            <label data-error="Invalid email">Email</label>
+          </div>          
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input type="text" name="FirstName" #FirstName="ngModel" [(ngModel)]="user.FirstName">
+            <label>First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input type="text" name="LastName" #LastName="ngModel" [(ngModel)]="user.LastName">
+            <label>Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <button class="btn-large btn-submit"  [disabled]="!UserRegistrationForm.valid" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
